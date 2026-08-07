@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/common/widgets/edutextfield/edutexttextfield.dart';
 import 'package:xwanedu/common/widgets/edutextfield/textfiled.dart';
 import 'package:xwanedu/common/widgets/socialbutton/socialbutton.dart';
+import 'package:xwanedu/common/widgets/title_logo/title_logo.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
 import 'package:xwanedu/feature/authentication/signup/screen/signup.dart';
@@ -15,8 +17,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _obscurePassword = true;
-
   static const Color primaryBlue = Color(0xFF1656C9);
   static const Color lightBlueBg = Color(0xFFDCE7FB);
   static const Color fieldBg = Color(0xFFF2F4F8);
@@ -48,42 +48,14 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               const SizedBox(height: SizeConstant.defaultSpace),
 
-              // Logo
-              Center(
-                child: Container(
-                  width: 64,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: lightBlueBg,
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                  child: const Icon(
-                    Icons.school_rounded,
-                    color: primaryBlue,
-                    size: SizeConstant.iconLg,
-                  ),
-                ),
-              ),
-              const SizedBox(height: SizeConstant.defaultSpace),
-
-              // Heading
-              Center(
-                child: Text(
-                  '${TextConstant.loginTitle} ${TextConstant.appName}',
-                  style: const TextStyle(
-                    fontSize: SizeConstant.fontSizeLg * 1.20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(height: SizeConstant.spaceBtwItems),
-              const Text(
-                TextConstant.loginSubTitle,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: SizeConstant.fontSizeMd,
-                  color: textGrey,
-                ),
+              // Logo, Title and subtitle
+              TitleLogo(
+                lightBlueBg: lightBlueBg,
+                primaryBlue: primaryBlue,
+                textGrey: textGrey,
+                icon: Icons.school_outlined,
+                title: TextConstant.loginTitle,
+                subtitle: TextConstant.loginSubTitle,
               ),
               const SizedBox(height: SizeConstant.spaceBtwSections),
 
@@ -106,60 +78,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // Email label
-                    const Text(
-                      TextConstant.email,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: SizeConstant.fontSizeMd,
-                        color: textDark,
-                      ),
+                    EduTextTextField(
+                      text: TextConstant.email,
+                      icon: Icons.email,
+                      hintText: 'Enter your email',
                     ),
-                    const SizedBox(height: 8),
-                    EduTextField(
-                      emailController: _emailController,
-                      fieldBg: fieldBg,
-                      borderColor: borderColor,
-                      primaryBlue: primaryBlue,
-                      hintText: 'name@gmail.com',
-                    ),
-                    const SizedBox(height: 18),
+                    SizedBox(height: 18),
 
                     // Password label + forgot
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          TextConstant.password,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConstant.fontSizeMd,
-                            color: textDark,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // Navigate to forgot password flow
-                          },
-                          child: const Text(
-                            TextConstant.forgetPassword,
-                            style: TextStyle(
-                              color: primaryBlue,
-                              fontWeight: FontWeight.w600,
-                              fontSize: SizeConstant.fontSizeSm,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                     const SizedBox(height: SizeConstant.spaceBtwItems / 2),
 
                     // Password field
-                    EduTextField(
-                      emailController: _passwordController,
-                      fieldBg: fieldBg,
-                      borderColor: borderColor,
-                      primaryBlue: primaryBlue,
+                    EduTextTextField(
+                      text: TextConstant.password,
+                      icon: Icons.lock_outline_rounded,
                       hintText: 'Enter your password',
+                      forgetPassword: TextConstant.forgotPassword,
                     ),
                     const SizedBox(height: SizeConstant.spaceBtwSections),
 
@@ -205,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(
                               fontSize: SizeConstant.fontSizeSm,
                               fontWeight: FontWeight.w600,
-                              color: textGrey.withOpacity(0.8),
+                              color: textGrey.withValues(alpha: 0.8),
                               letterSpacing: 0.5,
                             ),
                           ),

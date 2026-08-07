@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xwanedu/common/widgets/edutextfield/textfiled.dart';
+import 'package:xwanedu/common/widgets/edutextfield/edutexttextfield.dart';
+import 'package:xwanedu/common/widgets/title_logo/title_logo.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
 
@@ -26,33 +27,16 @@ class _SignupState extends State<Signup> {
               children: [
                 const SizedBox(height: 20),
 
-                Center(
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.school_rounded,
-                        size: SizeConstant.iconLg * 3,
-                        color: Colors.blueAccent,
-                      ),
-
-                      const SizedBox(height: SizeConstant.defaultSpace / 4),
-                      Text(
-                        TextConstant.signupTitle,
-                        style: TextStyle(
-                          fontSize: SizeConstant.fontSizeMd,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        TextConstant.signupSubTitle,
-                        style: TextStyle(
-                          fontSize: SizeConstant.fontSizeMd,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
+                //logo, title and subtitle
+                TitleLogo(
+                  lightBlueBg: Colors.blue.shade100,
+                  primaryBlue: Colors.blue,
+                  textGrey: Colors.grey,
+                  icon: Icons.school_rounded,
+                  title: TextConstant.signupTitle,
+                  subtitle: TextConstant.signupSubTitle,
                 ),
+
                 const SizedBox(height: SizeConstant.spaceBtwSections),
 
                 Padding(
@@ -62,59 +46,24 @@ class _SignupState extends State<Signup> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text(
-                        TextConstant.firstName,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: SizeConstant.fontSizeMd,
-                          color: Colors.black87,
-                        ),
+                      EduTextTextField(
+                        text: TextConstant.fullName,
+                        icon: Icons.person,
+                        hintText: 'Enter your full name',
                       ),
-                      const SizedBox(height: 8),
-                      EduTextField(
-                        emailController: emailController,
-                        fieldBg: Colors.white,
-                        borderColor: Colors.grey.shade300,
-                        primaryBlue: Colors.blueAccent,
-                        hintText: TextConstant.firstName,
-                        icon: Icons.person_outline_rounded,
+                      SizedBox(height: SizeConstant.spaceBtwInputFields),
+                      EduTextTextField(
+                        text: TextConstant.email,
+                        icon: Icons.email,
+                        hintText: 'Enter your email',
                       ),
 
                       SizedBox(height: SizeConstant.spaceBtwInputFields),
-                      const Text(
-                        TextConstant.email,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: SizeConstant.fontSizeMd,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      EduTextField(
-                        emailController: emailController,
-                        fieldBg: Colors.white,
-                        borderColor: Colors.grey.shade300,
-                        primaryBlue: Colors.blueAccent,
-                        hintText: TextConstant.email,
-                        icon: Icons.mail_outline_rounded,
-                      ),
-                      SizedBox(height: SizeConstant.spaceBtwInputFields),
 
-                      const Text(
-                        TextConstant.password,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: SizeConstant.fontSizeMd,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      EduTextField(
-                        emailController: emailController,
-                        fieldBg: Colors.white,
-                        borderColor: Colors.grey.shade300,
-                        primaryBlue: Colors.blueAccent,
-                        hintText: TextConstant.password,
+                      EduTextTextField(
+                        text: TextConstant.password,
                         icon: Icons.lock_outline_rounded,
+                        hintText: 'Enter your password',
                       ),
 
                       const SizedBox(height: SizeConstant.spaceBtwItems),
@@ -124,7 +73,11 @@ class _SignupState extends State<Signup> {
                         children: [
                           Checkbox(
                             value: false,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              setState(() {
+                                value = value ?? false;
+                              });
+                            },
                             materialTapTargetSize:
                                 MaterialTapTargetSize.shrinkWrap,
                           ),
