@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 
 class TitleLogo extends StatelessWidget {
   const TitleLogo({
     super.key,
-    required this.lightBlueBg,
     required this.primaryBlue,
     required this.textGrey,
     required this.icon,
     required this.title,
     required this.subtitle,
+    this.iconSize = SizeConstant.iconLg,
+    this.contianerWidth = SizeConstant.iconLg * 2,
+    this.contianerhigth = SizeConstant.iconMd * 2,
+    required this.lightBlueBg,
   });
 
   final Color lightBlueBg;
@@ -18,31 +22,33 @@ class TitleLogo extends StatelessWidget {
   final IconData icon;
   final String title;
   final String subtitle;
+  final double iconSize;
+  final double contianerWidth;
+  final double contianerhigth;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Center(
           child: Container(
-            width: SizeConstant.lg * 2,
-            height: SizeConstant.lg * 2,
+            width: contianerWidth,
+            height: contianerhigth,
             decoration: BoxDecoration(
               color: lightBlueBg,
               borderRadius: BorderRadius.circular(14),
             ),
-            child: Icon(icon, color: Colors.blue, size: SizeConstant.iconLg),
+            child: Icon(icon, color: primaryBlue, size: iconSize),
           ),
         ),
-        const SizedBox(height: SizeConstant.spaceBtwItems / 2),
+        const SizedBox(height: SizeConstant.spaceBtwItems),
 
         // Heading
-        Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: SizeConstant.fontSizeLg * 1.20,
-              fontWeight: FontWeight.bold,
-            ),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: SizeConstant.fontSizeLg * 1.20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.onSurface,
           ),
         ),
         const SizedBox(height: SizeConstant.spaceBtwItems / 4),
@@ -51,7 +57,7 @@ class TitleLogo extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: SizeConstant.fontSizeMd,
-            color: Color(0xFF6B7280),
+            color: AppColors.onSurfaceVariant,
           ),
         ),
       ],

@@ -11,21 +11,34 @@ class Signup extends StatefulWidget {
   State<Signup> createState() => _SignupState();
 }
 
-final TextEditingController emailController = TextEditingController();
-
 class _SignupState extends State<Signup> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool isTermAccepted = false;
+
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    fullNameController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: SizeConstant.sm),
+            padding: const EdgeInsets.symmetric(
+              horizontal: SizeConstant.lg,
+              vertical: SizeConstant.lg,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: SizeConstant.defaultSpace),
 
                 //logo, title and subtitle
                 TitleLogo(
@@ -50,66 +63,75 @@ class _SignupState extends State<Signup> {
                         text: TextConstant.fullName,
                         icon: Icons.person,
                         hintText: 'Enter your full name',
+                        controller: fullNameController,
                       ),
                       SizedBox(height: SizeConstant.spaceBtwInputFields),
                       EduTextTextField(
                         text: TextConstant.email,
                         icon: Icons.email,
                         hintText: 'Enter your email',
+                        controller: emailController,
                       ),
 
-                      SizedBox(height: SizeConstant.spaceBtwInputFields),
+                      SizedBox(height: SizeConstant.spaceBtwInputFields / 4),
 
                       EduTextTextField(
                         text: TextConstant.password,
                         icon: Icons.lock_outline_rounded,
                         hintText: 'Enter your password',
+                        controller: passwordController,
                       ),
 
                       const SizedBox(height: SizeConstant.spaceBtwItems),
 
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Checkbox(
-                            value: false,
-                            onChanged: (value) {
-                              setState(() {
-                                value = value ?? false;
-                              });
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                          Expanded(
-                            child: RichText(
-                              text: const TextSpan(
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 13,
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade400),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Checkbox(
+                              value: isTermAccepted,
+                              onChanged: (value) {
+                                setState(() {
+                                  isTermAccepted = value ?? false;
+                                });
+                              },
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            Expanded(
+                              child: RichText(
+                                text: const TextSpan(
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 13,
+                                  ),
+                                  children: [
+                                    TextSpan(text: "I agree to the "),
+                                    TextSpan(
+                                      text: "Terms and Conditions",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    TextSpan(text: " and "),
+                                    TextSpan(
+                                      text: "Privacy Policy",
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                children: [
-                                  TextSpan(text: "I agree to the "),
-                                  TextSpan(
-                                    text: "Terms and Conditions",
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  TextSpan(text: " and "),
-                                  TextSpan(
-                                    text: "Privacy Policy",
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
                       const SizedBox(height: 20),

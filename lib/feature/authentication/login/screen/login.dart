@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:xwanedu/common/widgets/edutextfield/edutexttextfield.dart';
-import 'package:xwanedu/common/widgets/edutextfield/textfiled.dart';
-import 'package:xwanedu/common/widgets/socialbutton/socialbutton.dart';
 import 'package:xwanedu/common/widgets/title_logo/title_logo.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
+import 'package:xwanedu/feature/authentication/login/screen/widgets/socialbuttons.dart';
 import 'package:xwanedu/feature/authentication/signup/screen/signup.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,9 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   static const Color primaryBlue = Color(0xFF1656C9);
   static const Color lightBlueBg = Color(0xFFDCE7FB);
-  static const Color fieldBg = Color(0xFFF2F4F8);
   static const Color borderColor = Color(0xFFE2E5EA);
-  static const Color textDark = Color(0xFF1A1D29);
   static const Color textGrey = Color(0xFF6B7280);
 
   @override
@@ -40,13 +37,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SizeConstant.lg,
+            vertical: SizeConstant.lg,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: SizeConstant.defaultSpace),
+              const SizedBox(height: SizeConstant.defaultSpace * 1.5),
 
               // Logo, Title and subtitle
               TitleLogo(
@@ -79,17 +79,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     // Email label
                     EduTextTextField(
+                      controller: _emailController,
                       text: TextConstant.email,
                       icon: Icons.email,
                       hintText: 'Enter your email',
                     ),
-                    SizedBox(height: 18),
 
                     // Password label + forgot
                     const SizedBox(height: SizeConstant.spaceBtwItems / 2),
 
                     // Password field
                     EduTextTextField(
+                      controller: _passwordController,
                       text: TextConstant.password,
                       icon: Icons.lock_outline_rounded,
                       hintText: 'Enter your password',
@@ -126,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: SizeConstant.spaceBtwSections),
 
                     // Divider
                     Row(
@@ -147,30 +148,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         Expanded(child: Divider(color: borderColor)),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: SizeConstant.spaceBtwSections),
 
                     // Social buttons
-                    Row(
-                      children: [
-                        Expanded(
-                          child: SocialButton(
-                            label: 'Google',
-                            icon: Icons.g_mobiledata_rounded,
-                            iconSize: SizeConstant.iconMd,
-                            onTap: () {},
-                          ),
-                        ),
-                        const SizedBox(width: SizeConstant.spaceBtwItems),
-                        Expanded(
-                          child: SocialButton(
-                            label: 'Apple',
-                            icon: Icons.apple_rounded,
-                            iconSize: SizeConstant.iconMd,
-                            onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
+                    SocialButtons(),
                   ],
                 ),
               ),
@@ -195,11 +176,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       },
-                      child: EduText(
-                        primaryBlue: primaryBlue,
-                        text: TextConstant.createAccount,
-                        fontSize: SizeConstant.fontSizeSm,
-                        fontWeight: FontWeight.w600,
+                      child: Text(
+                        TextConstant.createAccount,
+                        style: TextStyle(
+                          fontSize: SizeConstant.fontSizeSm,
+                          color: primaryBlue,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
@@ -208,33 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class EduText extends StatelessWidget {
-  const EduText({
-    super.key,
-    required this.primaryBlue,
-    required this.text,
-    required this.fontSize,
-    required this.fontWeight,
-  });
-
-  final Color primaryBlue;
-  final String text;
-  final double fontSize;
-  final FontWeight fontWeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      TextConstant.createAccount,
-      style: TextStyle(
-        fontSize: fontSize,
-        color: primaryBlue,
-        fontWeight: fontWeight,
       ),
     );
   }

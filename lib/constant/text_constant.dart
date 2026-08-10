@@ -8,6 +8,7 @@ class TextConstant {
   static const String hkContinue = "Continue";
 
   // -- Authentication Forms
+  static const String welcome = "Welcome to ";
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
   static const String fullName = "Full Name";
@@ -49,4 +50,5 @@ class TextConstant {
       "Your account successfully created!";
   static const String yourAccountCreatedSubTitle =
       "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
+  static const String splashScreenSlogan = 'Your gateway to knowledge';
 }

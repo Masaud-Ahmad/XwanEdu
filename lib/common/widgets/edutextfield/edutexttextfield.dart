@@ -3,18 +3,20 @@ import 'package:xwanedu/common/widgets/edutextfield/textfiled.dart';
 import 'package:xwanedu/constant/size.dart';
 
 class EduTextTextField extends StatelessWidget {
-  EduTextTextField({
+  const EduTextTextField({
     super.key,
     this.text,
     required this.icon,
     required this.hintText,
     this.forgetPassword,
+    required this.controller,
   });
+
   final String? text;
-  final TextEditingController _Controller = TextEditingController();
   final IconData icon;
   final String hintText;
   final String? forgetPassword;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,6 @@ class EduTextTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
@@ -34,24 +35,27 @@ class EduTextTextField extends StatelessWidget {
               ),
             ),
 
-            GestureDetector(
-              onTap: () {
-                // Handle forget password action
-              },
-              child: Text(
-                forgetPassword ?? '',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12,
-                  color: Colors.blueAccent,
+            if (forgetPassword != null)
+              GestureDetector(
+                onTap: () {
+                  // Forgot password
+                },
+                child: Text(
+                  forgetPassword!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Colors.blueAccent,
+                  ),
                 ),
               ),
-            ),
           ],
         ),
 
+        const SizedBox(height: 8),
+
         EduTextField(
-          emailController: _Controller,
+          emailController: controller,
           fieldBg: Colors.white,
           borderColor: Colors.grey.shade300,
           primaryBlue: Colors.blueAccent,
