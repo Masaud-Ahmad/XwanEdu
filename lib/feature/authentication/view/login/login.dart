@@ -3,8 +3,8 @@ import 'package:xwanedu/common/widgets/edutextfield/edutexttextfield.dart';
 import 'package:xwanedu/common/widgets/title_logo/title_logo.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
-import 'package:xwanedu/feature/authentication/login/screen/widgets/socialbuttons.dart';
-import 'package:xwanedu/feature/authentication/signup/screen/signup.dart';
+import 'package:xwanedu/feature/authentication/view/login/widgets/socialbuttons.dart';
+import 'package:xwanedu/feature/authentication/view/signup/signup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

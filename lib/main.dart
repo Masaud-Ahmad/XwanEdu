@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:xwanedu/constant/text_constant.dart';
-import 'package:xwanedu/feature/authentication/splashscreen/splashscreen.dart';
+import 'package:xwanedu/feature/authentication/view/splashscreen/splashscreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: TextConstant.appName,
       theme: ThemeData(

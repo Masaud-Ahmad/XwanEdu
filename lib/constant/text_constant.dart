@@ -29,6 +29,7 @@ class TextConstant {
   static const String verificationCode = "verificationCode";
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
+  static const String next = "Next";
 
   // -- Authentication Headings
   static const String loginTitle = "Welcome back,";
@@ -51,4 +52,15 @@ class TextConstant {
   static const String yourAccountCreatedSubTitle =
       "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
   static const String splashScreenSlogan = 'Your gateway to knowledge';
+
+  //onborading Title and Subtitle
+  static const String onBoardingTitle1 = "Welcome to XwanEdu";
+  static const String onBoardingTitle2 = "Connect and Learn";
+  static const String onBoardingTitle3 = "Grow Your Mind";
+  static const String onBoardingSubTitle1 =
+      "Learn new things every day in your digital classroom";
+  static const String onBoardingSubTitle2 =
+      "Join your teachers and friends in one simple space";
+  static const String onBoardingSubTitle3 =
+      "Reach your Education goals with smart tools by your side";
 }

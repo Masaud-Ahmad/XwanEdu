@@ -17,7 +17,8 @@ class _SignupState extends State<Signup> {
   final TextEditingController passwordController = TextEditingController();
   bool isTermAccepted = false;
 
-  void dispose() {
+  @override
+  dispose() {
     super.dispose();
     emailController.dispose();
     fullNameController.dispose();

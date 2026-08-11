@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:xwanedu/common/widgets/title_logo/title_logo.dart';
 import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
-import 'package:xwanedu/feature/authentication/login/screen/login.dart';
+import 'package:xwanedu/feature/authentication/view/onboardingscreen/onboardingscreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -16,17 +18,11 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
+
     Future.delayed(const Duration(seconds: 3), () {
-      // Navigate to the next screen after the delay
-      // You can use Navigator.pushReplacement to replace the current screen
-      // with the next screen.
-      Navigator.pushReplacement(
-        // ignore: use_build_context_synchronously
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ), // Replace NextScreen with your actual next screen widget
-      );
+      if (!mounted) return;
+
+      Get.offAll(() => const Onboardingscreen());
     });
   }
 
