@@ -16,7 +16,7 @@ class SizeConstant {
   static const double fontSizeSm = 12.0; // small
   static const double fontSizeMd = 16.0; // medium
   static const double fontSizeLg = 20.0; // large
-  static const double lineHeight = 1.5; // large
+  static const double lineHeight = 1.5; // Huge small
 
   // Button sizes
   static const double buttonHeight = 18.0;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/feature/authentication/view/onboardingscreen/widgets/onboardingsubtitle.dart';
 import 'package:xwanedu/feature/authentication/view/onboardingscreen/widgets/onboardingtitle.dart';

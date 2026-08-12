@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/utils.dart';
 import 'package:xwanedu/common/widgets/edutextfield/edutexttextfield.dart';
 import 'package:xwanedu/common/widgets/title_logo/title_logo.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
 import 'package:xwanedu/feature/authentication/view/login/widgets/socialbuttons.dart';
 import 'package:xwanedu/feature/authentication/view/signup/signup.dart';
+import 'package:xwanedu/feature/classroom/view/classroomscreen/classroom_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -30,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleSignIn() {
     // Hook up real auth logic here
+    Get.to(const ClassroomScreen());
     debugPrint('Email: ${_emailController.text}');
     debugPrint('Password: ${_passwordController.text}');
   }
