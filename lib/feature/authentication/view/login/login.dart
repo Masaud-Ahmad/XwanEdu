@@ -7,7 +7,7 @@ import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
 import 'package:xwanedu/feature/authentication/view/login/widgets/socialbuttons.dart';
 import 'package:xwanedu/feature/authentication/view/signup/signup.dart';
-import 'package:xwanedu/feature/classroom/view/classroomscreen/classroom_screen.dart';
+import 'package:xwanedu/feature/classroom/view/classroomscreen/classroom_dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleSignIn() {
     // Hook up real auth logic here
-    Get.to(const ClassroomScreen());
+    Get.to(ClassroomDashboard());
     debugPrint('Email: ${_emailController.text}');
     debugPrint('Password: ${_passwordController.text}');
   }

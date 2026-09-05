@@ -42,6 +42,8 @@ class SizeConstant {
 
   // Divider height
   static const double dividerHeight = 1.0;
+  // sizebox height
+  static const double sizeboxHeight = 600.0;
 
   // Product item dimensions
   static const double productImageSize = 120.0;

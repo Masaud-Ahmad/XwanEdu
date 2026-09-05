@@ -22,6 +22,24 @@ class ClassroomService {
       ),
 
       ClassroomModel(
+        subject: 'English Literature',
+        section: 'Section C • Period 4',
+        teacher: 'Prof. Michael Reed',
+        students: 18,
+        color: const Color(0xff00875A),
+        icon: Icons.language,
+      ),
+
+      ClassroomModel(
+        subject: 'English Literature',
+        section: 'Section C • Period 4',
+        teacher: 'Prof. Michael Reed',
+        students: 18,
+        color: const Color(0xff00875A),
+        icon: Icons.language,
+      ),
+
+      ClassroomModel(
         subject: 'General Biology',
         section: 'Section B • Period 1',
         teacher: 'Ms. Elena Rodriguez',

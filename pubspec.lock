@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  bottom_navigation_bar_kit:
+    dependency: "direct main"
+    description:
+      name: bottom_navigation_bar_kit
+      sha256: "47ba64405ebdc25c2e144a4a50449c2c2d060f52cfe0636724ea1b9d068c68c8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   characters:
     dependency: transitive
     description:
