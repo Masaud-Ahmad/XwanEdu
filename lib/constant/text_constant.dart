@@ -12,7 +12,7 @@ class TextConstant {
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
   static const String fullName = "Full Name";
-  static const String email = "E-Mail";
+  static const String email = " E-Mail Address";
   static const String password = "Password";
   static const String newPassword = "New Password";
   static const String username = "Username";
@@ -31,6 +31,9 @@ class TextConstant {
   static const String resendEmailIn = "Resend email in";
 
   static const String next = "Next";
+  static const String preferences = "Preferences";
+  static const String displayLanguage = "Display Language";
+  static const String darkMode = "Dark Mode";
 
   // -- Authentication Headings
   static const String loginTitle = "Welcome back,";

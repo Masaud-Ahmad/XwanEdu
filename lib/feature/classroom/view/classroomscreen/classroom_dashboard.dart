@@ -16,7 +16,7 @@ class ClassroomDashboard extends StatefulWidget {
 class _ClassroomDashboardState extends State<ClassroomDashboard> {
   final NavigationController controller = Get.put(NavigationController());
 
-  final List<Widget> screens = const [ClassroomScreen(), SettingScreen()];
+  final List<Widget> screens = const [ClassroomScreen(), SettingsScreenView()];
 
   @override
   Widget build(BuildContext context) {
