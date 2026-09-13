@@ -34,4 +34,6 @@ class Onboarding extends GetxController {
     pageController.dispose();
     super.onClose();
   }
+
+  void changePage(int index) {}
 }

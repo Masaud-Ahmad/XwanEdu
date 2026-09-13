@@ -22,6 +22,7 @@ class _ClassroomDashboardState extends State<ClassroomDashboard> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
@@ -44,7 +45,19 @@ class _ClassroomDashboardState extends State<ClassroomDashboard> {
 
         bottomNavigationBar: BottomNavBar(
           currentIndex: controller.currentIndex.value,
+          items: [
+            NavItem(
+              icon: Icons.home_outlined,
+              activeIcon: Icons.home,
+              title: 'Home',
+            ),
 
+            NavItem(
+              icon: Icons.settings_outlined,
+              activeIcon: Icons.settings,
+              title: 'Settings',
+            ),
+          ],
           onTap: (index) {
             controller.changePage(index);
           },

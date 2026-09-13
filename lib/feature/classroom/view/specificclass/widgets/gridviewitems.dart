@@ -11,6 +11,7 @@ class GridViewItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: SizeConstant.md),
         Row(
           children: const [
             Icon(
@@ -40,12 +41,6 @@ class GridViewItems extends StatelessWidget {
           childAspectRatio: 1.2,
           children: [
             EduContainerWidget(
-              title: 'Announcements',
-              subTitle: 'Share updates with students',
-              icon: Icons.campaign,
-            ),
-
-            EduContainerWidget(
               title: 'Quizzes',
               subTitle: 'Attempt quizzes and view scores',
               icon: Icons.bar_chart,
@@ -55,12 +50,6 @@ class GridViewItems extends StatelessWidget {
               title: 'Assignments',
               subTitle: 'Submit work and view grades',
               icon: Icons.edit_note,
-            ),
-
-            EduContainerWidget(
-              title: 'Students',
-              subTitle: 'View classmates',
-              icon: Icons.people,
             ),
 
             EduContainerWidget(

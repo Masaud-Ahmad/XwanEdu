@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/common/widgets/bottam_nav_bar/bottam_nav_bar_widget.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/feature/classroom/view/specificclass/widgets/gridviewitems.dart';
 import 'package:xwanedu/feature/classroom/view/specificclass/widgets/specificclassroomheader.dart';
@@ -41,6 +42,33 @@ class ClassroomDashboardScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: 0,
+        items: [
+          NavItem(
+            icon: Icons.home_outlined,
+            activeIcon: Icons.home,
+            title: 'Stream',
+          ),
+
+          NavItem(icon: Icons.group, activeIcon: Icons.task, title: 'People'),
+
+          NavItem(
+            icon: Icons.calendar_month_outlined,
+            activeIcon: Icons.calendar_month,
+            title: 'Calendar',
+          ),
+
+          NavItem(
+            icon: Icons.settings_outlined,
+            activeIcon: Icons.settings,
+            title: 'Settings',
+          ),
+        ],
+        onTap: (index) {
+          // Handle navigation tap
+        },
       ),
     );
   }

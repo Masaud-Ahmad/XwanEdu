@@ -14,11 +14,13 @@ class NavBarItem extends StatelessWidget {
   });
 
   final Function(int) onTap;
+
   final int currentIndex;
   final int index;
 
   final IconData icon;
   final IconData activeIcon;
+
   final String title;
 
   @override
@@ -34,7 +36,9 @@ class NavBarItem extends StatelessWidget {
         children: [
           Icon(
             isSelected ? activeIcon : icon,
+
             size: SizeConstant.iconLg * .9,
+
             color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant,
           ),
 
@@ -42,6 +46,7 @@ class NavBarItem extends StatelessWidget {
 
           Text(
             title,
+
             style: TextStyle(
               fontSize: SizeConstant.fontSizeSm,
 

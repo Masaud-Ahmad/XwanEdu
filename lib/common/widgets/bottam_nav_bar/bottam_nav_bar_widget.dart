@@ -6,16 +6,24 @@ class BottomNavBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
+  // Different items can be passed from different screens
+  final List<NavItem> items;
+
+  // Different shape can also be passed
+  final NotchedShape? shape;
+
   const BottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    required this.items,
+    this.shape,
   });
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
+      shape: shape,
       notchMargin: SizeConstant.sm,
       elevation: SizeConstant.sm,
 
@@ -25,32 +33,33 @@ class BottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-          children: [
-            // HOME
-            NavBarItem(
+          children: List.generate(items.length, (index) {
+            final item = items[index];
+
+            return NavBarItem(
               onTap: onTap,
               currentIndex: currentIndex,
-              index: 0,
-              icon: Icons.home_outlined,
-              activeIcon: Icons.home,
-              title: 'Home',
-            ),
-
-            // SPACE FOR FAB
-            const SizedBox(width: 50),
-
-            // SETTINGS
-            NavBarItem(
-              onTap: onTap,
-              currentIndex: currentIndex,
-              index: 1,
-              icon: Icons.settings_outlined,
-              activeIcon: Icons.settings,
-              title: 'Settings',
-            ),
-          ],
+              index: index,
+              icon: item.icon,
+              activeIcon: item.activeIcon,
+              title: item.title,
+            );
+          }),
         ),
       ),
     );
   }
+}
+
+// This contains information about one navbar button
+class NavItem {
+  final IconData icon;
+  final IconData activeIcon;
+  final String title;
+
+  const NavItem({
+    required this.icon,
+    required this.activeIcon,
+    required this.title,
+  });
 }
