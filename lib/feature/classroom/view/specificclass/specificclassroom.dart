@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/common/widgets/circleimage/circleimage.dart';
+import 'package:xwanedu/common/widgets/edu_icon/edu_icon.dart';
 import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
@@ -11,26 +13,32 @@ class ClassroomDashboardScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(SizeConstant.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header Section
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(
+                    SizeConstant.cardRadiusLg,
+                  ),
+                  border: Border.all(
+                    color: const Color(0xFF35305E),
+                    width: 1.0,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Top Card Header Section (Blue/Purple Accent Style)
                     Container(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(SizeConstant.md),
                       decoration: const BoxDecoration(
-                        color: Color(0xFF3D5AFE),
+                        color: AppColors.primary,
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          topRight: Radius.circular(16),
+                          topLeft: Radius.circular(SizeConstant.cardRadiusLg),
+                          topRight: Radius.circular(SizeConstant.cardRadiusLg),
                         ),
                       ),
                       child: Row(
@@ -43,26 +51,21 @@ class ClassroomDashboardScreen extends StatelessWidget {
                                 Text(
                                   'DBMS Lab Spring 2026 C',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: SizeConstant.fontSizeLg - 2,
                                     fontWeight: FontWeight.bold,
-                                    color: AppColors.onSurface,
+                                    color: AppColors.onPrimary,
                                   ),
                                 ),
                                 SizedBox(height: 4),
                                 Text(
                                   'Databases • Section C',
                                   style: TextStyle(
-                                    color: AppColors.onSurface,
-                                    fontSize: 13,
+                                    color: AppColors.onPrimary,
+                                    fontSize: SizeConstant.fontSizeMd,
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                          const Icon(
-                            Icons.dns,
-                            color: AppColors.onSurface,
-                            size: 28,
                           ),
                         ],
                       ),
@@ -70,19 +73,15 @@ class ClassroomDashboardScreen extends StatelessWidget {
                     // Bottom Teacher & Details Section
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 12.0,
+                        horizontal: SizeConstant.md,
+                        vertical: SizeConstant.md,
                       ),
                       child: Row(
                         children: [
-                          const CircleAvatar(
-                            radius: 20,
-                            backgroundColor: Color(0xFF35305E),
-                            child: Icon(
-                              Icons.person,
-                              color: AppColors.onSurface,
-                              size: 20,
-                            ),
+                          const CircleImage(
+                            imageUrl: 'imageUrl',
+                            width: SizeConstant.iconLg * 1.5,
+                            height: SizeConstant.iconLg * 1.5,
                           ),
                           const SizedBox(width: 12),
                           Expanded(
@@ -92,28 +91,27 @@ class ClassroomDashboardScreen extends StatelessWidget {
                                 Text(
                                   'Sumayyea Salahuddin',
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: SizeConstant.fontSizeMd - 2,
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.onSurface,
                                   ),
                                 ),
-                                SizedBox(height: 2),
+                                SizedBox(height: SizeConstant.xs),
                                 Text(
                                   '42 Students',
                                   style: TextStyle(
                                     color: AppColors.onSurface,
-                                    fontSize: 12,
+                                    fontSize: SizeConstant.fontSizeSm,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(
-                              Icons.more_vert,
-                              color: AppColors.onSurface,
-                            ),
-                            onPressed: () {},
+                          EduIcon(
+                            iconData: Icons.more_vert,
+                            isVisible: false,
+                            onTap: () {},
+                            borderVisible: false,
                           ),
                         ],
                       ),
@@ -121,71 +119,75 @@ class ClassroomDashboardScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: SizeConstant.md),
 
-              // Quick Actions Header
-              Row(
-                children: const [
-                  Icon(
-                    Icons.apps,
-                    color: AppColors.onSurface,
-                    size: SizeConstant.iconMd - 4,
-                  ),
-                  SizedBox(width: 8),
-                  Text(
-                    TextConstant.quickAction,
-                    style: TextStyle(
-                      fontSize: SizeConstant.lg,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: SizeConstant.cardElevation),
-
-              // Quick Actions Grid (Non-reusable custom widgets, fully inline)
-              GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 1.2,
+              Column(
                 children: [
-                  SpecificClassWidget(
-                    title: 'Announcements',
-                    subTitle: 'Share updates with students',
-                    icon: Icons.campaign,
+                  // Quick Actions Header
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.apps,
+                        color: AppColors.onSurface,
+                        size: SizeConstant.iconMd - 4,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        TextConstant.quickAction,
+                        style: TextStyle(
+                          fontSize: SizeConstant.lg,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
+                  const SizedBox(height: SizeConstant.cardElevation),
 
-                  SpecificClassWidget(
-                    title: 'Quizzes',
-                    subTitle: 'Attempt quizzes and view scores',
-                    icon: Icons.bar_chart,
-                  ),
+                  // Quick Actions Grid (Non-reusable custom widgets, fully inline)
+                  GridView.count(
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 1.2,
+                    children: [
+                      SpecificClassWidget(
+                        title: 'Announcements',
+                        subTitle: 'Share updates with students',
+                        icon: Icons.campaign,
+                      ),
 
-                  SpecificClassWidget(
-                    title: 'Assignments',
-                    subTitle: 'Submit work and view grades',
-                    icon: Icons.edit_note,
-                  ),
+                      SpecificClassWidget(
+                        title: 'Quizzes',
+                        subTitle: 'Attempt quizzes and view scores',
+                        icon: Icons.bar_chart,
+                      ),
 
-                  SpecificClassWidget(
-                    title: 'Students',
-                    subTitle: 'View classmates',
-                    icon: Icons.people,
-                  ),
+                      SpecificClassWidget(
+                        title: 'Assignments',
+                        subTitle: 'Submit work and view grades',
+                        icon: Icons.edit_note,
+                      ),
 
-                  SpecificClassWidget(
-                    title: 'Resources',
-                    subTitle: 'Download study materials',
-                    icon: Icons.folder,
-                  ),
+                      SpecificClassWidget(
+                        title: 'Students',
+                        subTitle: 'View classmates',
+                        icon: Icons.people,
+                      ),
 
-                  SpecificClassWidget(
-                    title: 'Reports',
-                    subTitle: 'View class performance',
-                    icon: Icons.show_chart,
+                      SpecificClassWidget(
+                        title: 'Resources',
+                        subTitle: 'Download study materials',
+                        icon: Icons.folder,
+                      ),
+
+                      SpecificClassWidget(
+                        title: 'Reports',
+                        subTitle: 'View class performance',
+                        icon: Icons.show_chart,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -233,7 +235,7 @@ class _SpecificClassWidgetState extends State<SpecificClassWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(SizeConstant.md),
       decoration: BoxDecoration(
         color: const Color(0xFF262243),
         borderRadius: BorderRadius.circular(16),

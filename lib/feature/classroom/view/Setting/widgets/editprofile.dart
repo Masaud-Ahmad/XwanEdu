@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xwanedu/common/widgets/circleimage/circleimage.dart';
 import 'package:xwanedu/common/widgets/edutext/edutext.dart';
-import 'package:xwanedu/common/widgets/imageicon/imageicon.dart';
+import 'package:xwanedu/common/widgets/edu_icon/edu_icon.dart';
 import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 
@@ -29,10 +29,20 @@ class EditableProfileAvatar extends StatelessWidget {
         Stack(
           children: [
             // Circular Image
-            CircleImage(imageUrl: imageUrl),
+            CircleImage(
+              imageUrl: imageUrl,
+              width: SizeConstant.iconLg * 4,
+              height: SizeConstant.iconLg * 4,
+            ),
 
             // Camera Icon Badge
-            EduImageIcon(onCameraTap: onCameraTap),
+            EduIcon(
+              iconData: Icons.camera_alt_outlined,
+              onTap: onCameraTap,
+              isVisible: true,
+              borderVisible:
+                  false, // Set to true if you want a border around the badge
+            ),
           ],
         ),
 
