@@ -90,6 +90,7 @@ import 'package:flutter/material.dart';
 import 'package:xwanedu/common/widgets/bottam_nav_bar/bottam_nav_bar_widget.dart';
 import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
+import 'package:xwanedu/feature/classroom/view/specificclass/widgets/announcement_attendence.dart';
 import 'package:xwanedu/feature/classroom/view/specificclass/widgets/gridviewitems.dart';
 import 'package:xwanedu/feature/classroom/view/specificclass/widgets/specificclassroomheader.dart';
 
@@ -110,7 +111,7 @@ class ClassroomDashboardScreen extends StatelessWidget {
               const SizedBox(height: SizeConstant.md),
 
               // Modular Announcements Section
-              ClassroomQuickOpsRow(),
+              AnnouoncementAttendence(),
               const SizedBox(height: SizeConstant.md),
 
               // Quick Actions Header / Grid
@@ -166,143 +167,6 @@ class ClassroomDashboardScreen extends StatelessWidget {
           // Handle navigation tap
         },
       ),
-    );
-  }
-}
-
-class ClassroomQuickOpsRow extends StatelessWidget {
-  final VoidCallback? onAddAnnouncement;
-  final VoidCallback? onMarkAttendance;
-  final String latestAnnouncement;
-  final String attendanceStatus;
-
-  const ClassroomQuickOpsRow({
-    super.key,
-    this.onAddAnnouncement,
-    this.onMarkAttendance,
-    this.latestAnnouncement = "Final Exam Prep Posted",
-    this.attendanceStatus = "Session #6 • 38/42",
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Left: Announcement Compact Block
-        Expanded(
-          flex: 11,
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: onAddAnnouncement,
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.onSurface),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Row(
-                          children: [
-                            Icon(
-                              Icons.arrow_back_ios,
-                              size: 9,
-                              color: AppColors.onSurface,
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              "Announcements",
-                              style: TextStyle(
-                                fontSize: SizeConstant.fontSizeMd,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.onSurface,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: const Icon(
-                            Icons.campaign,
-                            color: Colors.amberAccent,
-                            size: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(width: 10),
-        // Right: Attendance Action Button/Card
-        Expanded(
-          flex: 9,
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: onMarkAttendance,
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: AppColors.primary.withOpacity(0.35),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Row(
-                      children: [
-                        Icon(
-                          Icons.how_to_reg,
-                          color: Colors.greenAccent,
-                          size: 15,
-                        ),
-                        SizedBox(width: 5),
-                        Text(
-                          "Attendance",
-                          style: TextStyle(
-                            fontSize: SizeConstant.fontSizeMd,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.onSurface,
-                          ),
-                        ),
-
-                        SizedBox(width: 10),
-
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 9,
-                          color: AppColors.onSurface,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
