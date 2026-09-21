@@ -49,7 +49,7 @@ class EditableProfileAvatar extends StatelessWidget {
         const SizedBox(height: SizeConstant.spaceBtwItems),
 
         // 2. Name
-        TextWidget(
+        EduText(
           name: name,
           fontSize: SizeConstant.fontSizeLg.toInt(),
           fontcolor: AppColors.primary,

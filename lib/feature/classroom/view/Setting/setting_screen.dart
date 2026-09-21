@@ -129,7 +129,7 @@ class SettingsScreenView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          TextWidget(
+                          EduText(
                             name: TextConstant.darkMode,
                             fontSize: SizeConstant.fontSizeMd.toInt(),
                             fontcolor: Color(0xFF0A2540),

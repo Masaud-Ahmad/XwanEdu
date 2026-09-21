@@ -11,7 +11,7 @@ class CreateAnnouncementScreen extends StatefulWidget {
 class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
-  bool _isPinned = true;
+  final bool _isPinned = true;
   final String _date = 'Mar 15, 2026';
   final String _time = '10:00 AM';
 
@@ -25,7 +25,6 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,

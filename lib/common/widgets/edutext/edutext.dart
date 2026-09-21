@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TextWidget extends StatelessWidget {
-  const TextWidget({
+class EduText extends StatelessWidget {
+  const EduText({
     super.key,
     required this.name,
     required this.fontSize,
