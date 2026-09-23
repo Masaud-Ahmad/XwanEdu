@@ -96,8 +96,10 @@ class SpecificClassroomHeader extends StatelessWidget {
                 EduIcon(
                   iconData: Icons.more_vert,
                   isVisible: false,
+                  iconsize: SizeConstant.iconMd.toInt(),
                   onTap: () {},
                   borderVisible: false,
+                  iconcolor: AppColors.primary,
                 ),
               ],
             ),

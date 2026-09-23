@@ -8,6 +8,8 @@ class EduIcon extends StatelessWidget {
   final IconData iconData;
   final bool isVisible;
   final bool borderVisible;
+  final int iconsize;
+  final Color iconcolor;
 
   // 2. Add it to the constructor
   const EduIcon({
@@ -16,6 +18,8 @@ class EduIcon extends StatelessWidget {
     this.iconData = Icons.camera_alt_outlined,
     this.isVisible = true,
     required this.borderVisible,
+    required this.iconsize,
+    required this.iconcolor,
   });
 
   @override
@@ -26,7 +30,7 @@ class EduIcon extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap, // Now this will work correctly
         child: Container(
-          padding: const EdgeInsets.all(SizeConstant.sm),
+          padding: EdgeInsets.all(SizeConstant.sm),
           decoration: BoxDecoration(
             color: isVisible ? AppColors.primary : null, // Blue badge color
             shape: BoxShape.circle,
@@ -34,11 +38,7 @@ class EduIcon extends StatelessWidget {
                 ? Border.all(color: AppColors.onSurface, width: 2.5)
                 : null,
           ),
-          child: Icon(
-            iconData,
-            color: AppColors.onSurface,
-            size: SizeConstant.iconMd,
-          ),
+          child: Icon(iconData, color: iconcolor, size: iconsize.toDouble()),
         ),
       ),
     );

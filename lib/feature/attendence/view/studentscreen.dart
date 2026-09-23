@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/common/widgets/edu_icon/edu_icon.dart';
+import 'package:xwanedu/common/widgets/edutext/edutext.dart';
+import 'package:xwanedu/constant/colors.dart';
+import 'package:xwanedu/constant/size.dart';
 
 class StudentAttendanceScreen extends StatelessWidget {
   const StudentAttendanceScreen({super.key});
@@ -16,8 +20,12 @@ class StudentAttendanceScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF6F8FC),
 
       appBar: AppBar(
-        title: const Text('Attendance'),
-        backgroundColor: Colors.white,
+        title: EduText(
+          name: 'Attendence',
+          fontSize: SizeConstant.fontSizeMd.toInt(),
+          fontcolor: AppColors.onSurface,
+        ),
+        backgroundColor: AppColors.onPrimary,
       ),
 
       body: Padding(
@@ -27,19 +35,21 @@ class StudentAttendanceScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            const Text(
-              'DBMS Lab Spring 2026 C',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            EduText(
+              name: 'DBMS Lab 2026 C',
+              fontSize: SizeConstant.fontSizeLg.toInt(),
+              fontcolor: AppColors.onSurface,
+            ),
+            const SizedBox(height: SizeConstant.lg),
+
+            EduText(
+              name: 'Today\'s  Attendence',
+
+              fontSize: SizeConstant.fontSizeLg.toInt() - 2,
+              fontcolor: AppColors.onSurface,
             ),
 
-            const SizedBox(height: 20),
-
-            const Text(
-              "Today's Attendance",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-
-            const SizedBox(height: 10),
+            const SizedBox(height: SizeConstant.md),
 
             Container(
               width: double.infinity,
@@ -50,9 +60,15 @@ class StudentAttendanceScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
 
-              child: const Column(
+              child: Column(
                 children: [
-                  Icon(Icons.check_circle, size: 55, color: Colors.green),
+                  EduIcon(
+                    borderVisible: false,
+                    iconData: Icons.check_circle,
+                    isVisible: false,
+                    iconsize: SizeConstant.iconLg.toInt() + 20,
+                    iconcolor: AppColors.success,
+                  ),
 
                   SizedBox(height: 10),
 
@@ -70,9 +86,10 @@ class StudentAttendanceScreen extends StatelessWidget {
 
             const SizedBox(height: 25),
 
-            const Text(
-              'Overall Attendance',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            EduText(
+              name: "Overall Attendence",
+              fontSize: SizeConstant.fontSizeLg.toInt(),
+              fontcolor: AppColors.onSurface,
             ),
 
             const SizedBox(height: 10),
@@ -120,7 +137,12 @@ class StudentAttendanceScreen extends StatelessWidget {
                               color: Colors.green,
                             ),
                           ),
-                          const Text('Present'),
+
+                          EduText(
+                            name: "Present",
+                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontcolor: AppColors.success,
+                          ),
                         ],
                       ),
 
@@ -134,21 +156,28 @@ class StudentAttendanceScreen extends StatelessWidget {
                               color: Colors.red,
                             ),
                           ),
-                          const Text('Absent'),
+
+                          EduText(
+                            name: "Absent",
+                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontcolor: AppColors.error,
+                          ),
                         ],
                       ),
 
                       Column(
                         children: [
-                          Text(
-                            '$total',
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
+                          EduText(
+                            name: '$total',
+                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontcolor: AppColors.onSurface,
                           ),
-                          const Text('Total'),
+
+                          EduText(
+                            name: "Total",
+                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontcolor: AppColors.onSurface,
+                          ),
                         ],
                       ),
                     ],

@@ -40,6 +40,8 @@ class EditableProfileAvatar extends StatelessWidget {
               iconData: Icons.camera_alt_outlined,
               onTap: onCameraTap,
               isVisible: true,
+              iconsize: SizeConstant.iconLg.toInt(),
+              iconcolor: AppColors.primary,
               borderVisible:
                   false, // Set to true if you want a border around the badge
             ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/feature/announcement/announcement_screen.dart';
+import 'package:xwanedu/feature/attendence/view/studentscreen.dart';
 import 'package:xwanedu/feature/attendence/view/teacherscreen.dart';
 
 class AnnouoncementAttendence extends StatelessWidget {
@@ -94,7 +95,7 @@ class AnnouoncementAttendence extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: () {
-                Get.to(TeacherAttendanceScreen());
+                Get.to(StudentAttendanceScreen());
               },
               borderRadius: BorderRadius.circular(12),
               child: Container(
