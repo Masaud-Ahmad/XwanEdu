@@ -8,7 +8,7 @@ class EduIcon extends StatelessWidget {
   final IconData iconData;
   final bool isVisible;
   final bool borderVisible;
-  final int iconsize;
+  final double iconsize;
   final Color iconcolor;
 
   // 2. Add it to the constructor
@@ -30,7 +30,7 @@ class EduIcon extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap, // Now this will work correctly
         child: Container(
-          padding: EdgeInsets.all(SizeConstant.sm),
+          padding: EdgeInsets.all(SizeConstant.xs - 2),
           decoration: BoxDecoration(
             color: isVisible ? AppColors.primary : null, // Blue badge color
             shape: BoxShape.circle,

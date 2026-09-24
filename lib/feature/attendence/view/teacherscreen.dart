@@ -23,9 +23,9 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
       backgroundColor: const Color(0xFFF6F8FC),
 
       appBar: AppBar(
-        title: EduText(
+        title: const EduText(
           name: 'Attendance',
-          fontSize: SizeConstant.fontSizeLg.toInt(),
+          fontSize: SizeConstant.fontSizeLg,
           fontcolor: AppColors.onSurface,
         ),
         backgroundColor: Colors.white,
@@ -38,9 +38,9 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            EduText(
+            const EduText(
               name: 'DBMS  Lab 2026 c',
-              fontSize: SizeConstant.fontSizeLg.toInt(),
+              fontSize: SizeConstant.fontSizeLg,
               fontcolor: AppColors.onSurface,
             ),
 
@@ -68,9 +68,9 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
                         fontSize: SizeConstant.fontSizeLg.toInt() + 3,
                         fontcolor: AppColors.success,
                       ),
-                      EduText(
+                      const EduText(
                         name: "Present",
-                        fontSize: SizeConstant.fontSizeMd.toInt(),
+                        fontSize: SizeConstant.fontSizeMd,
                         fontcolor: AppColors.success,
                       ),
                     ],
@@ -83,9 +83,9 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
                         fontSize: SizeConstant.fontSizeLg.toInt() + 3,
                         fontcolor: AppColors.error,
                       ),
-                      EduText(
+                      const EduText(
                         name: "Absent",
-                        fontSize: SizeConstant.fontSizeMd.toInt(),
+                        fontSize: SizeConstant.fontSizeMd,
                         fontcolor: AppColors.error,
                       ),
                     ],
@@ -98,9 +98,9 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
                         fontSize: SizeConstant.fontSizeLg.toInt() + 3,
                         fontcolor: AppColors.onSurface,
                       ),
-                      EduText(
+                      const EduText(
                         name: 'Total',
-                        fontSize: SizeConstant.fontSizeMd.toInt(),
+                        fontSize: SizeConstant.fontSizeMd,
                         fontcolor: AppColors.onSurface,
                       ),
                     ],
@@ -154,7 +154,7 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
 
                               EduText(
                                 name: student.rollNumber,
-                                fontSize: SizeConstant.fontSizeSm.toInt(),
+                                fontSize: SizeConstant.fontSizeSm,
                                 fontcolor: const Color.fromARGB(
                                   255,
                                   144,

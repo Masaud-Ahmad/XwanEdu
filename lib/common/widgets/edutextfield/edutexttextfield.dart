@@ -55,7 +55,7 @@ class EduTextTextField extends StatelessWidget {
         const SizedBox(height: 8),
 
         EduTextField(
-          emailController: controller,
+          controller: controller,
           fieldBg: Colors.white,
           borderColor: Colors.grey.shade300,
           primaryBlue: Colors.blueAccent,

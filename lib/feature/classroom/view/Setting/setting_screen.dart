@@ -49,9 +49,7 @@ class SettingsScreenView extends StatelessWidget {
                       ),
                       const SizedBox(height: SizeConstant.spaceBtwItems),
                       EduTextField(
-                        emailController: TextEditingController(
-                          text: 'Alex Johnson',
-                        ),
+                        controller: TextEditingController(text: 'Alex Johnson'),
                         fieldBg: AppColors.onPrimary,
                         borderColor: AppColors.onSurfaceVariant,
                         primaryBlue: AppColors.primary,
@@ -71,7 +69,7 @@ class SettingsScreenView extends StatelessWidget {
                       ),
                       const SizedBox(height: SizeConstant.spaceBtwItems / 2),
                       EduTextField(
-                        emailController: TextEditingController(
+                        controller: TextEditingController(
                           text: 'alex.johnson@eduflow.ac.edu',
                         ),
                         fieldBg: AppColors.onPrimary,
@@ -129,9 +127,9 @@ class SettingsScreenView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          EduText(
+                          const EduText(
                             name: TextConstant.darkMode,
-                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontSize: SizeConstant.fontSizeMd,
                             fontcolor: Color(0xFF0A2540),
                           ),
                           Switch(

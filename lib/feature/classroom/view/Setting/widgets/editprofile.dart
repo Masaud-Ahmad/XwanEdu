@@ -40,7 +40,7 @@ class EditableProfileAvatar extends StatelessWidget {
               iconData: Icons.camera_alt_outlined,
               onTap: onCameraTap,
               isVisible: true,
-              iconsize: SizeConstant.iconLg.toInt(),
+              iconsize: SizeConstant.iconLg,
               iconcolor: AppColors.primary,
               borderVisible:
                   false, // Set to true if you want a border around the badge
@@ -53,7 +53,7 @@ class EditableProfileAvatar extends StatelessWidget {
         // 2. Name
         EduText(
           name: name,
-          fontSize: SizeConstant.fontSizeLg.toInt(),
+          fontSize: SizeConstant.fontSizeLg,
           fontcolor: AppColors.primary,
           // Note: Add a bold font weight in your TextWidget if it supports it
         ),

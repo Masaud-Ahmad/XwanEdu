@@ -8,7 +8,7 @@ class EduText extends StatelessWidget {
     required this.fontcolor,
   });
   final String name;
-  final int fontSize;
+  final double fontSize;
   final Color fontcolor;
 
   @override

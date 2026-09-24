@@ -8,58 +8,64 @@ class EduContainerWidget extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.icon,
+    required this.ontap,
   });
 
   final String title;
   final String subTitle;
   final IconData icon;
+  final VoidCallback ontap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // Space between black border and blue container
-      padding: const EdgeInsets.all(3),
-
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1),
-        borderRadius: BorderRadius.circular(16),
-      ),
+    return GestureDetector(
+      onTap: ontap,
 
       child: Container(
-        padding: const EdgeInsets.all(SizeConstant.md),
+        // Space between black border and blue container
+        padding: const EdgeInsets.all(3),
 
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 137, 212, 241),
-          borderRadius: BorderRadius.circular(13),
+          border: Border.all(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(16),
         ),
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Container(
+          padding: const EdgeInsets.all(SizeConstant.md),
 
-          children: [
-            Icon(icon, color: AppColors.onSurface, size: SizeConstant.iconLg),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 137, 212, 241),
+            borderRadius: BorderRadius.circular(13),
+          ),
 
-            const SizedBox(height: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
 
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            children: [
+              Icon(icon, color: AppColors.onSurface, size: SizeConstant.iconLg),
+
+              const SizedBox(height: 12),
+
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
-            ),
 
-            const SizedBox(height: 4),
+              const SizedBox(height: 4),
 
-            Text(
-              subTitle,
-              style: const TextStyle(fontSize: 11, color: Colors.white54),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+              Text(
+                subTitle,
+                style: const TextStyle(fontSize: 11, color: Colors.white54),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ),
     );

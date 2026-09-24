@@ -20,9 +20,9 @@ class StudentAttendanceScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF6F8FC),
 
       appBar: AppBar(
-        title: EduText(
+        title: const EduText(
           name: 'Attendence',
-          fontSize: SizeConstant.fontSizeMd.toInt(),
+          fontSize: SizeConstant.fontSizeMd,
           fontcolor: AppColors.onSurface,
         ),
         backgroundColor: AppColors.onPrimary,
@@ -35,17 +35,17 @@ class StudentAttendanceScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            EduText(
+            const EduText(
               name: 'DBMS Lab 2026 C',
-              fontSize: SizeConstant.fontSizeLg.toInt(),
+              fontSize: SizeConstant.fontSizeLg,
               fontcolor: AppColors.onSurface,
             ),
             const SizedBox(height: SizeConstant.lg),
 
-            EduText(
+            const EduText(
               name: 'Today\'s  Attendence',
 
-              fontSize: SizeConstant.fontSizeLg.toInt() - 2,
+              fontSize: SizeConstant.fontSizeLg - 2,
               fontcolor: AppColors.onSurface,
             ),
 
@@ -62,11 +62,11 @@ class StudentAttendanceScreen extends StatelessWidget {
 
               child: Column(
                 children: [
-                  EduIcon(
+                  const EduIcon(
                     borderVisible: false,
                     iconData: Icons.check_circle,
                     isVisible: false,
-                    iconsize: SizeConstant.iconLg.toInt() + 20,
+                    iconsize: SizeConstant.iconLg + 20,
                     iconcolor: AppColors.success,
                   ),
 
@@ -86,9 +86,9 @@ class StudentAttendanceScreen extends StatelessWidget {
 
             const SizedBox(height: 25),
 
-            EduText(
+            const EduText(
               name: "Overall Attendence",
-              fontSize: SizeConstant.fontSizeLg.toInt(),
+              fontSize: SizeConstant.fontSizeLg,
               fontcolor: AppColors.onSurface,
             ),
 
@@ -138,9 +138,9 @@ class StudentAttendanceScreen extends StatelessWidget {
                             ),
                           ),
 
-                          EduText(
+                          const EduText(
                             name: "Present",
-                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontSize: SizeConstant.fontSizeMd,
                             fontcolor: AppColors.success,
                           ),
                         ],
@@ -157,9 +157,9 @@ class StudentAttendanceScreen extends StatelessWidget {
                             ),
                           ),
 
-                          EduText(
+                          const EduText(
                             name: "Absent",
-                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontSize: SizeConstant.fontSizeMd,
                             fontcolor: AppColors.error,
                           ),
                         ],
@@ -169,13 +169,13 @@ class StudentAttendanceScreen extends StatelessWidget {
                         children: [
                           EduText(
                             name: '$total',
-                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontSize: SizeConstant.fontSizeMd,
                             fontcolor: AppColors.onSurface,
                           ),
 
-                          EduText(
+                          const EduText(
                             name: "Total",
-                            fontSize: SizeConstant.fontSizeMd.toInt(),
+                            fontSize: SizeConstant.fontSizeMd,
                             fontcolor: AppColors.onSurface,
                           ),
                         ],

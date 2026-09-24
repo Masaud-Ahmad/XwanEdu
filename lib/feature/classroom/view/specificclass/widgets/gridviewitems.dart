@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:xwanedu/common/widgets/edu_container/edu_container.dart';
 import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
+import 'package:xwanedu/feature/assignment/view/teacher/teacher_assignment.dart';
 
 class GridViewItems extends StatelessWidget {
   const GridViewItems({super.key});
@@ -44,24 +47,30 @@ class GridViewItems extends StatelessWidget {
               title: 'Quizzes',
               subTitle: 'Attempt quizzes and view scores',
               icon: Icons.bar_chart,
+              ontap: () => TeacherAssignmentScreen(),
             ),
 
             EduContainerWidget(
               title: 'Assignments',
               subTitle: 'Submit work and view grades',
               icon: Icons.edit_note,
+              ontap: () => TeacherAssignmentScreen(),
             ),
 
             EduContainerWidget(
               title: 'Resources',
               subTitle: 'Download study materials',
               icon: Icons.folder,
+              ontap: () {
+                Get.to(() => const TeacherAssignmentScreen());
+              },
             ),
 
             EduContainerWidget(
               title: 'Reports',
               subTitle: 'View class performance',
               icon: Icons.show_chart,
+              ontap: () => TeacherAssignmentScreen(),
             ),
           ],
         ),

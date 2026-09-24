@@ -46,7 +46,7 @@ class SettingSectionCard extends StatelessWidget {
               const SizedBox(width: SizeConstant.sm),
               EduText(
                 name: title,
-                fontSize: SizeConstant.fontSizeMd.toInt(),
+                fontSize: SizeConstant.fontSizeMd,
                 fontcolor: AppColors.primary,
               ),
             ],

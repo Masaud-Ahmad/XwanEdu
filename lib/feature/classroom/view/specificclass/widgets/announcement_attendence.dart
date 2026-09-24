@@ -4,7 +4,6 @@ import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/feature/announcement/announcement_screen.dart';
 import 'package:xwanedu/feature/attendence/view/studentscreen.dart';
-import 'package:xwanedu/feature/attendence/view/teacherscreen.dart';
 
 class AnnouoncementAttendence extends StatelessWidget {
   final VoidCallback? onAddAnnouncement;
