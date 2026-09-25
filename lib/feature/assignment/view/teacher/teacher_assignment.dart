@@ -21,7 +21,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.surface,
+      backgroundColor: AppColors.background,
 
       appBar: AppBar(
         title: const EduText(
@@ -29,7 +29,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
           fontSize: SizeConstant.fontSizeMd,
           fontcolor: AppColors.onSurface,
         ),
-        backgroundColor: AppColors.onPrimary,
+        backgroundColor: AppColors.background,
       ),
 
       floatingActionButton: FloatingActionButton.extended(
@@ -60,8 +60,8 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
 
             const EduText(
               name: "Managment Classroom System",
-              fontSize: SizeConstant.fontSizeLg,
-              fontcolor: AppColors.onSurface,
+              fontSize: SizeConstant.fontSizeSm + 3,
+              fontcolor: AppColors.outline,
             ),
 
             const SizedBox(height: 20),

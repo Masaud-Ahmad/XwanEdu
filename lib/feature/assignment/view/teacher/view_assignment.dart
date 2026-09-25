@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/common/widgets/edutext/edutext.dart';
+import 'package:xwanedu/common/widgets/elevated_button/elevated_button.dart';
+import 'package:xwanedu/constant/colors.dart';
+import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/feature/assignment/data.dart';
+import 'package:xwanedu/utils/dialog_box.dart';
 
 class AssignmentSubmissionsScreen extends StatefulWidget {
   const AssignmentSubmissionsScreen({super.key, required this.assignmentTitle});
@@ -16,11 +21,17 @@ class _AssignmentSubmissionsScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F8FC),
+      backgroundColor: AppColors.background,
 
       appBar: AppBar(
-        title: const Text('Submissions'),
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.onPrimary,
+
+        title: const EduText(
+          name: "Submission",
+          fontSize: SizeConstant.fontSizeLg,
+          fontcolor: AppColors.onPrimary,
+        ),
       ),
 
       body: Padding(
@@ -29,9 +40,10 @@ class _AssignmentSubmissionsScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.assignmentTitle,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            EduText(
+              name: widget.assignmentTitle,
+              fontSize: SizeConstant.fontSizeLg,
+              fontcolor: AppColors.onSurface,
             ),
 
             const SizedBox(height: 20),
@@ -48,7 +60,7 @@ class _AssignmentSubmissionsScreenState
                     padding: const EdgeInsets.all(15),
 
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.successLight,
                       borderRadius: BorderRadius.circular(14),
                     ),
 
@@ -64,28 +76,33 @@ class _AssignmentSubmissionsScreenState
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    student.name,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  EduText(
+                                    name: student.name,
+                                    fontSize: SizeConstant.fontSizeMd,
+                                    fontcolor: AppColors.onSurface,
                                   ),
-                                  Text(
-                                    student.rollNumber,
-                                    style: const TextStyle(color: Colors.grey),
+                                  EduText(
+                                    name: student.rollNumber,
+                                    fontSize: SizeConstant.fontSizeSm,
+                                    fontcolor: const Color.fromARGB(
+                                      255,
+                                      101,
+                                      104,
+                                      109,
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
 
-                            Text(
-                              student.submitted ? 'Submitted' : 'Not Submitted',
-                              style: TextStyle(
-                                color: student.submitted
-                                    ? Colors.green
-                                    : Colors.red,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            EduText(
+                              name: student.submitted
+                                  ? "Submitted"
+                                  : 'Not Submitted',
+                              fontSize: SizeConstant.fontSizeMd,
+                              fontcolor: student.submitted
+                                  ? AppColors.success
+                                  : AppColors.error,
                             ),
                           ],
                         ),
@@ -96,67 +113,53 @@ class _AssignmentSubmissionsScreenState
                           Row(
                             children: [
                               Expanded(
-                                child: OutlinedButton.icon(
+                                child: EduButton(
+                                  borderRadius: 30,
+                                  height: 40,
+                                  backgroundColor: const Color.fromARGB(
+                                    255,
+                                    236,
+                                    238,
+                                    241,
+                                  ),
+                                  text: 'View File',
+                                  textColor: AppColors.onSurfaceVariant,
                                   onPressed: () {},
-                                  icon: const Icon(Icons.description_outlined),
-                                  label: const Text('View File'),
                                 ),
                               ),
 
                               const SizedBox(width: 10),
 
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Colors.blue, // Button background color
+                                  foregroundColor:
+                                      Colors.white, // Text and icon color
+                                  elevation: 6, // Shadow depth
 
-                                      builder: (_) {
-                                        final controller =
-                                            TextEditingController();
-
-                                        return AlertDialog(
-                                          title: const Text('Give Marks'),
-
-                                          content: TextField(
-                                            controller: controller,
-                                            keyboardType: TextInputType.number,
-                                            decoration: const InputDecoration(
-                                              hintText: 'Enter marks',
-                                            ),
-                                          ),
-
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('Cancel'),
-                                            ),
-
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  student.marks = int.tryParse(
-                                                    controller.text,
-                                                  );
-                                                });
-
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('Save'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-
-                                  child: Text(
-                                    student.marks == null
-                                        ? 'Give Marks'
-                                        : '${student.marks} Marks',
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                      40,
+                                    ), // Rounded corners
                                   ),
+                                ),
+                                onPressed: () {
+                                  // Your action here
+
+                                  DialogBox.giveStudentMarks(
+                                    onSave: (marks) {
+                                      setState(() {
+                                        student.marks = marks;
+                                      });
+                                    },
+                                  );
+                                },
+
+                                child: Text(
+                                  student.marks == null
+                                      ? 'Give Marks'
+                                      : '${student.marks}/20',
                                 ),
                               ),
                             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/constant/colors.dart';
 
 class EduButton extends StatelessWidget {
   final String text;
@@ -32,9 +33,9 @@ class EduButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           // Use the provided color or fall back to a default primary color
-          backgroundColor: backgroundColor ?? const Color(0xFF1976D2),
+          backgroundColor: backgroundColor ?? AppColors.primary,
           foregroundColor: textColor ?? Colors.white,
-          elevation: 0, // Flat design; increase if you want a drop shadow
+          elevation: 6, // Flat design; increase if you want a drop shadow
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
