@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:xwanedu/common/widgets/edu_container/edu_container.dart';
+import 'package:xwanedu/common/widgets/edutext/edutext.dart';
+import 'package:xwanedu/common/widgets/edutextfield/textfiled.dart';
+import 'package:xwanedu/common/widgets/elevated_button/elevated_button.dart';
+import 'package:xwanedu/constant/colors.dart';
+import 'package:xwanedu/constant/size.dart';
+import 'package:xwanedu/utils/file_picker.dart';
 
 class CreateAnnouncementScreen extends StatefulWidget {
   const CreateAnnouncementScreen({super.key});
@@ -11,7 +20,7 @@ class CreateAnnouncementScreen extends StatefulWidget {
 class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
-  final bool _isPinned = true;
+
   final String _date = 'Mar 15, 2026';
   final String _time = '10:00 AM';
 
@@ -25,202 +34,187 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Soft classroom/app background
+      backgroundColor: AppColors.background,
+
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: const CloseButton(color: Colors.black87),
+        // Keep app bar clean instead of strong blue
+        backgroundColor: AppColors.surface,
+        elevation: 5,
+
+        leading: const CloseButton(color: AppColors.onSurface),
+
         title: const Text(
           'Create Announcement',
           style: TextStyle(
-            color: Colors.black87,
+            color: AppColors.onSurface,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
         ),
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
             // Course Info Banner
             Container(
               padding: const EdgeInsets.all(12),
+
               decoration: BoxDecoration(
-                color: Colors.blue.shade50.withAlpha(6),
+                // Light blue classroom accent
+                color: const Color(0xFFE8F0FE),
+
                 borderRadius: BorderRadius.circular(12),
+
+                border: Border.all(color: const Color(0xFFD6E4FF)),
               ),
+
               child: const Row(
                 children: [
-                  Icon(Icons.campaign, color: Colors.blue, size: 28),
+                  Icon(Icons.campaign, color: AppColors.primary, size: 28),
+
                   SizedBox(width: 12),
+
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'DBMS Lab Spring 2026 C',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
+                      EduText(
+                        name: 'DBMS Lab Spring 2026 C',
+                        fontSize: SizeConstant.fontSizeSm + 3,
+                        fontcolor: AppColors.onSurface,
                       ),
-                      Text(
-                        'Section C • 42 Students',
-                        style: TextStyle(color: Colors.grey, fontSize: 12),
+
+                      EduText(
+                        name: 'Section C • 42 Students',
+                        fontSize: SizeConstant.fontSizeSm,
+                        fontcolor: Color(0xFF667085),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
+
             const SizedBox(height: 20),
 
-            // Title *
-            const Text(
-              'Title *',
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+            // Title
+            const EduText(
+              name: 'Title *',
+              fontSize: SizeConstant.fontSizeSm + 1,
+              fontcolor: AppColors.onSurface,
             ),
+
             const SizedBox(height: 6),
-            TextField(
+
+            EduTextField(
               controller: _titleController,
-              decoration: InputDecoration(
-                hintText: 'Enter announcement title',
-                hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 13),
-                helperText: 'e.g. Lab submission reminder',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 12,
-                ),
-              ),
+
+              fieldBg: AppColors.surface,
+
+              // Softer border
+              borderColor: const Color(0xFFE2E8F0),
+
+              primaryBlue: AppColors.primary,
+
+              hintText: "Enter announcement Title",
             ),
+
             const SizedBox(height: 16),
 
-            // Content * with live character counter
-            const Text(
-              'Content *',
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
-            ),
-            const SizedBox(height: 6),
-            ValueListenableBuilder<TextEditingValue>(
-              valueListenable: _contentController,
-              builder: (context, value, child) {
-                final count = value.text.length;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextField(
-                      controller: _contentController,
-                      maxLines: 4,
-                      maxLength: 1000,
-                      buildCounter:
-                          (
-                            context, {
-                            required currentLength,
-                            required isFocused,
-                            required maxLength,
-                          }) => null,
-                      decoration: InputDecoration(
-                        hintText: 'Write your announcement here...',
-                        hintStyle: TextStyle(
-                          color: Colors.grey.shade400,
-                          fontSize: 13,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      '$count/1000',
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 11,
-                      ),
-                    ),
-                  ],
-                );
-              },
+            const EduText(
+              name: 'Content ',
+              fontSize: SizeConstant.fontSizeSm + 1,
+              fontcolor: AppColors.onSurface,
             ),
 
-            // Attach File Box
-            const Text(
-              'Attach File (Optional)',
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
-            ),
             const SizedBox(height: 6),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Row(
-                children: [
-                  Icon(Icons.attach_file, color: Colors.blue, size: 20),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Choose File',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 13,
-                          ),
-                        ),
-                        Text(
-                          'PDF, DOC, PPT, Images (Max 10 MB)',
-                          style: TextStyle(color: Colors.grey, fontSize: 11),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Icon(Icons.chevron_right, color: Colors.grey),
-                ],
-              ),
+
+            EduTextField(
+              controller: _contentController,
+
+              fieldBg: AppColors.surface,
+
+              borderColor: const Color(0xFFE2E8F0),
+
+              primaryBlue: AppColors.primary,
+
+              hintText: 'Write Your announcement Here',
+
+              maxline: 5,
             ),
+
+            const SizedBox(height: 12),
+
+            // Attach File
+            const EduText(
+              name: 'Attach File (Optional)',
+              fontSize: SizeConstant.fontSizeSm,
+              fontcolor: AppColors.onSurface,
+            ),
+
+            const SizedBox(height: 6),
+
+            FilePickerTile(title: 'Choose File', onTap: () {}),
+
             const SizedBox(height: 16),
 
-            // Date and Time Row
-            const Text(
-              'Date and Time',
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+            // Date and Time
+            const EduText(
+              name: 'Date & Time',
+              fontSize: SizeConstant.fontSizeSm,
+              fontcolor: AppColors.onSurface,
             ),
+
             const SizedBox(height: 6),
+
             Row(
               children: [
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(12),
+
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
+                      // White card
+                      color: AppColors.surface,
+
+                      border: Border.all(color: const Color(0xFFE2E8F0)),
+
                       borderRadius: BorderRadius.circular(10),
                     ),
+
                     child: Row(
                       children: [
                         const Icon(
                           Icons.calendar_today_outlined,
                           size: 16,
-                          color: Colors.blue,
+
+                          // Brand blue
+                          color: AppColors.primary,
                         ),
+
                         const SizedBox(width: 8),
+
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+
                           children: [
                             const Text(
                               'Date',
                               style: TextStyle(
-                                color: Colors.grey,
+                                color: Color(0xFF98A2B3),
                                 fontSize: 10,
                               ),
                             ),
+
                             Text(
                               _date,
                               style: const TextStyle(
+                                color: AppColors.onSurface,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
                               ),
@@ -231,35 +225,47 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                     ),
                   ),
                 ),
+
                 const SizedBox(width: 12),
+
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(12),
+
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
+                      color: AppColors.surface,
+
+                      border: Border.all(color: const Color(0xFFE2E8F0)),
+
                       borderRadius: BorderRadius.circular(10),
                     ),
+
                     child: Row(
                       children: [
                         const Icon(
                           Icons.access_time_outlined,
                           size: 16,
-                          color: Colors.blue,
+                          color: AppColors.primary,
                         ),
+
                         const SizedBox(width: 8),
+
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+
                           children: [
                             const Text(
                               'Time',
                               style: TextStyle(
-                                color: Colors.grey,
+                                color: Color(0xFF98A2B3),
                                 fontSize: 10,
                               ),
                             ),
+
                             Text(
                               _time,
                               style: const TextStyle(
+                                color: AppColors.onSurface,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
                               ),
@@ -273,41 +279,47 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
               ],
             ),
 
-            // Bottom Buttons
+            SizedBox(height: SizeConstant.xl * 2),
+
             Row(
               children: [
                 Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.pop(context),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.black87),
-                    ),
+                  flex: 1,
+
+                  child: EduButton(
+                    borderRadius: 45,
+
+                    isBorderVisible: true,
+
+                    isBackgroundVisible: false,
+
+                    // Neutral Cancel button
+                    borderColor: const Color(0xFFCBD5E1),
+
+                    textColor: const Color(0xFF475569),
+
+                    text: 'Cancel',
+
+                    onPressed: () {},
                   ),
                 ),
+
                 const SizedBox(width: 12),
+
                 Expanded(
-                  child: FilledButton(
-                    onPressed: () {
-                      Navigator.pop(context, {
-                        'title': _titleController.text,
-                        'content': _contentController.text,
-                        'pinned': _isPinned,
-                      });
-                    },
-                    style: FilledButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const Text('Post Announcement'),
+                  flex: 2,
+
+                  child: EduButton(
+                    borderRadius: 40,
+
+                    // Main classroom brand action
+                    backgroundColor: AppColors.primary,
+
+                    textColor: Colors.white,
+
+                    text: 'Post Announcement',
+
+                    onPressed: () {},
                   ),
                 ),
               ],

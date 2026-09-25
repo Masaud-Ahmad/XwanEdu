@@ -51,7 +51,7 @@ class _CreateAssignmentScreenState extends State<CreateAssignmentScreen> {
             EduTextField(
               leftPadding: 10,
               controller: titleController,
-              fieldBg: AppColors.onPrimary,
+              fieldBg: AppColors.surface,
               borderColor: AppColors.onSurface,
               primaryBlue: AppColors.primary,
               hintText: 'Enter Assignment Title',
@@ -70,8 +70,8 @@ class _CreateAssignmentScreenState extends State<CreateAssignmentScreen> {
               leftPadding: 10,
               maxline: 5,
               controller: descriptionController,
-              fieldBg: AppColors.onPrimary,
               borderColor: AppColors.onSurface,
+              fieldBg: AppColors.surface,
               primaryBlue: AppColors.onPrimary,
               hintText: "Description",
             ),
@@ -145,7 +145,7 @@ class _CreateAssignmentScreenState extends State<CreateAssignmentScreen> {
             EduTextField(
               leftPadding: 10,
               controller: marksController,
-              fieldBg: AppColors.onPrimary,
+              fieldBg: AppColors.surface,
               borderColor: AppColors.onSurface,
               primaryBlue: AppColors.primary,
               hintText: "Example-10",

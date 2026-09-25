@@ -33,14 +33,15 @@ class EduTextField extends StatelessWidget {
 
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(color: Color(0xFF9CA3AF)),
+
+        hintStyle: const TextStyle(color: Color(0xFF9CA3AF), fontSize: 14),
         prefixIcon: icon != null
             ? Icon(icon, color: Color(0xFF9CA3AF), size: 20)
             : null,
         filled: true,
 
         fillColor: fieldBg,
-        contentPadding: EdgeInsets.only(left: leftPadding!),
+        contentPadding: EdgeInsets.all(leftPadding!),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: borderColor),
