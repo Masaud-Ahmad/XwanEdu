@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:xwanedu/common/widgets/edu_container/edu_container.dart';
 import 'package:xwanedu/common/widgets/edutext/edutext.dart';
 import 'package:xwanedu/common/widgets/edutextfield/textfiled.dart';
 import 'package:xwanedu/common/widgets/elevated_button/elevated_button.dart';
@@ -40,7 +37,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
       appBar: AppBar(
         // Keep app bar clean instead of strong blue
         backgroundColor: AppColors.surface,
-        elevation: 5,
+        elevation: 0,
 
         leading: const CloseButton(color: AppColors.onSurface),
 

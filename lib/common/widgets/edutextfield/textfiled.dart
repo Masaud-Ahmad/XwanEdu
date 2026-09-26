@@ -10,7 +10,7 @@ class EduTextField extends StatelessWidget {
     required this.hintText,
     this.icon,
     this.maxline,
-    this.leftPadding = 4,
+    this.leftPadding = 17,
   }) : _controller = controller;
 
   final TextEditingController _controller;
@@ -34,9 +34,13 @@ class EduTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
 
-        hintStyle: const TextStyle(color: Color(0xFF9CA3AF), fontSize: 14),
+        hintStyle: const TextStyle(
+          color: Color(0xFF9CA3AF),
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
         prefixIcon: icon != null
-            ? Icon(icon, color: Color(0xFF9CA3AF), size: 20)
+            ? Icon(icon, color: Color(0xFF9CA3AF), size: 25)
             : null,
         filled: true,
 
@@ -52,7 +56,7 @@ class EduTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: primaryBlue, width: 1.5),
+          borderSide: BorderSide(color: primaryBlue, width: 2),
         ),
       ),
     );

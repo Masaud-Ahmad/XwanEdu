@@ -6,6 +6,7 @@ import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
 import 'package:xwanedu/feature/assignment/view/teacher/teacher_assignment.dart';
+import 'package:xwanedu/feature/resources/resources.dart';
 
 class GridViewItems extends StatelessWidget {
   const GridViewItems({super.key});
@@ -54,23 +55,21 @@ class GridViewItems extends StatelessWidget {
               title: 'Assignments',
               subTitle: 'Submit work and view grades',
               icon: Icons.edit_note,
-              ontap: () => TeacherAssignmentScreen(),
+              ontap: () => Get.to(TeacherAssignmentScreen()),
             ),
 
             EduContainerWidget(
               title: 'Resources',
               subTitle: 'Download study materials',
               icon: Icons.folder,
-              ontap: () {
-                Get.to(() => const TeacherAssignmentScreen());
-              },
+              ontap: () => Get.to(ResourcesScreen()),
             ),
 
             EduContainerWidget(
               title: 'Reports',
               subTitle: 'View class performance',
               icon: Icons.show_chart,
-              ontap: () => TeacherAssignmentScreen(),
+              ontap: () {},
             ),
           ],
         ),

@@ -3,7 +3,6 @@ import 'package:xwanedu/constant/colors.dart';
 import 'package:xwanedu/constant/size.dart';
 
 class EduIcon extends StatelessWidget {
-  // 1. Declare the missing variable here
   final VoidCallback? onTap;
   final IconData iconData;
   final bool isVisible;
@@ -11,7 +10,6 @@ class EduIcon extends StatelessWidget {
   final double iconsize;
   final Color iconcolor;
 
-  // 2. Add it to the constructor
   const EduIcon({
     super.key,
     this.onTap,
@@ -27,18 +25,29 @@ class EduIcon extends StatelessWidget {
     return Positioned(
       bottom: 0,
       right: 4,
-      child: GestureDetector(
-        onTap: onTap, // Now this will work correctly
-        child: Container(
-          padding: EdgeInsets.all(SizeConstant.xs - 2),
-          decoration: BoxDecoration(
-            color: isVisible ? AppColors.primary : null, // Blue badge color
-            shape: BoxShape.circle,
-            border: borderVisible
-                ? Border.all(color: AppColors.onSurface, width: 2.5)
-                : null,
+      child: Material(
+        color: Colors.transparent,
+        shape: const CircleBorder(),
+        child: InkWell(
+          onTap: onTap,
+
+          // Click effect
+          splashColor: AppColors.primary.withValues(alpha: 0.3),
+          highlightColor: AppColors.primary.withValues(alpha: 0.15),
+
+          customBorder: const CircleBorder(),
+
+          child: Container(
+            padding: EdgeInsets.all(SizeConstant.xs - 2),
+            decoration: BoxDecoration(
+              color: isVisible ? AppColors.primary : null,
+              shape: BoxShape.circle,
+              border: borderVisible
+                  ? Border.all(color: AppColors.onSurface, width: 2.5)
+                  : null,
+            ),
+            child: Icon(iconData, color: iconcolor, size: iconsize),
           ),
-          child: Icon(iconData, color: iconcolor, size: iconsize.toDouble()),
         ),
       ),
     );
