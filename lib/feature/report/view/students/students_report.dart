@@ -142,6 +142,7 @@ class StudentReportScreen extends StatelessWidget {
     required String date,
     required String marks,
     required Color iconColor,
+    
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),

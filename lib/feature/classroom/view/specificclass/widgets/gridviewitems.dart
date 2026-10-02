@@ -7,6 +7,7 @@ import 'package:xwanedu/constant/size.dart';
 import 'package:xwanedu/constant/text_constant.dart';
 import 'package:xwanedu/feature/assignment/view/teacher/teacher_assignment.dart';
 import 'package:xwanedu/feature/report/view/students/students_report.dart';
+import 'package:xwanedu/feature/report/view/teacher/teacher_report.dart';
 import 'package:xwanedu/feature/resources/resources.dart';
 
 class GridViewItems extends StatelessWidget {
@@ -70,7 +71,7 @@ class GridViewItems extends StatelessWidget {
               title: 'Reports',
               subTitle: 'View class performance',
               icon: Icons.show_chart,
-              ontap: () => Get.to(StudentReportScreen()),
+              ontap: () => Get.to(TeacherReportScreen()),
             ),
           ],
         ),
