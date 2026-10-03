@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xwanedu/feature/report/view/teacher/widget/students_marks_card.dart';
 
 class GiveMarksScreen extends StatelessWidget {
   const GiveMarksScreen({
@@ -105,7 +106,7 @@ class GiveMarksScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  studentMarkTile(
+                  StudentMarkTile(
                     name: 'Ahmed Khan',
                     rollNumber: '23PWCSE2210',
                     initials: 'AH',
@@ -114,7 +115,7 @@ class GiveMarksScreen extends StatelessWidget {
                     color: Colors.blue,
                   ),
 
-                  studentMarkTile(
+                  StudentMarkTile(
                     name: 'Sara Ali',
                     rollNumber: '23PWCSE2211',
                     initials: 'SA',
@@ -123,7 +124,7 @@ class GiveMarksScreen extends StatelessWidget {
                     color: Colors.purple,
                   ),
 
-                  studentMarkTile(
+                  StudentMarkTile(
                     name: 'Fatima Ahmad',
                     rollNumber: '23PWCSE2212',
                     initials: 'FA',
@@ -132,7 +133,7 @@ class GiveMarksScreen extends StatelessWidget {
                     color: Colors.green,
                   ),
 
-                  studentMarkTile(
+                  StudentMarkTile(
                     name: 'Hamza Raza',
                     rollNumber: '23PWCSE2213',
                     initials: 'HA',
@@ -141,7 +142,7 @@ class GiveMarksScreen extends StatelessWidget {
                     color: Colors.orange,
                   ),
 
-                  studentMarkTile(
+                  StudentMarkTile(
                     name: 'Ayesha Latif',
                     rollNumber: '23PWCSE2214',
                     initials: 'AL',
@@ -183,82 +184,10 @@ class GiveMarksScreen extends StatelessWidget {
       ),
     );
   }
+}
 
   // ============================================
   // STUDENT TILE
   // ============================================
 
-  Widget studentMarkTile({
-    required String name,
-    required String rollNumber,
-    required String initials,
-    required String marks,
-    required int totalMarks,
-    required Color color,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
-
-      child: Row(
-        children: [
-          // STUDENT AVATAR
-          CircleAvatar(
-            radius: 22,
-
-            backgroundColor: color.withValues(alpha: 0.15),
-
-            child: Text(
-              initials,
-              style: TextStyle(color: color, fontWeight: FontWeight.bold),
-            ),
-          ),
-
-          const SizedBox(width: 12),
-
-          // STUDENT DETAILS
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-              children: [
-                Text(name, style: const TextStyle(fontWeight: FontWeight.w600)),
-
-                const SizedBox(height: 3),
-
-                Text(
-                  rollNumber,
-                  style: const TextStyle(color: Colors.grey, fontSize: 11),
-                ),
-              ],
-            ),
-          ),
-
-          // MARKS FIELD
-          SizedBox(
-            width: 55,
-            height: 42,
-
-            child: TextField(
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.number,
-
-              decoration: InputDecoration(
-                hintText: marks,
-
-                contentPadding: EdgeInsets.zero,
-
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(width: 6),
-
-          Text('/$totalMarks', style: const TextStyle(color: Colors.grey)),
-        ],
-      ),
-    );
-  }
-}
+  

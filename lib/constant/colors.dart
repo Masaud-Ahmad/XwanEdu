@@ -47,4 +47,6 @@ class AppColors {
 
   static const Color info = Color(0xFF2563EB);
   static const Color infoLight = Color(0xFFDBEAFE);
+
+  static const Color greyColor = Colors.grey;
 }
